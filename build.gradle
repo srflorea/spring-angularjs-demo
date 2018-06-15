@@ -32,4 +32,7 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/com.h2database/h2
 	testCompile group: 'com.h2database', name: 'h2', version: '1.4.196'
+	
+	// https://mvnrepository.com/artifact/postgresql/postgresql
+	compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
 }
