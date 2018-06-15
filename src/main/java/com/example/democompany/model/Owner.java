@@ -1,9 +1,12 @@
 package com.example.democompany.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -16,6 +19,14 @@ public class Owner {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
+	
+	private String name;
+
+/*	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "company_id")
+	private Company company;*/
+
+	public Owner() {}
 
 	@JsonCreator
     public Owner(
@@ -25,11 +36,14 @@ public class Owner {
 		this.name = name;
 	}
 
-	@JsonCreator
-    public Owner(@JsonProperty("name") String name) {
-		this.name = name;
+/*	public Company getCompany() {
+		return company;
 	}
-	
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}*/
+
 	public String getId() {
 		return id;
 	}
@@ -45,6 +59,4 @@ public class Owner {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	private String name;
 }

@@ -2,11 +2,13 @@ package com.example.democompany.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Company {
 
 	@Id
+	@Column(name="company_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 
@@ -27,9 +30,10 @@ public class Company {
 	private String country;
 	private String email;
 	private String phoneNumber;
-	
-	@OneToMany(targetEntity=Owner.class, mappedBy="id", fetch=FetchType.EAGER)
-	private List<String> owners;
+
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="company_id")
+	private List<Owner> owners;
 
 	public Company() {}
 	
@@ -46,7 +50,7 @@ public class Company {
     		@JsonProperty("country") String country,
     		@JsonProperty(value="email", required=false) String email,
     		@JsonProperty(value="phoneNumber", required=false) String phoneNumber,
-    		@JsonProperty(value="owners", required=false) List<String> owners) {
+    		@JsonProperty(value="owners", required=false) List<Owner> owners) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -99,10 +103,10 @@ public class Company {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public List<String> getOwners() {
+	public List<Owner> getOwners() {
 		return owners;
 	}
-	public void setOwners(List<String> owners) {
+	public void setOwners(List<Owner> owners) {
 		this.owners = owners;
 	}
 }

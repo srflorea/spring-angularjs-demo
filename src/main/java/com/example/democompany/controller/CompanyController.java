@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.democompany.exception.NotFoundException;
 import com.example.democompany.model.Company;
+import com.example.democompany.model.Owner;
 import com.example.democompany.service.CompanyService;
 
 @RestController
@@ -36,12 +37,17 @@ public class CompanyController {
 	
 	@RequestMapping(value = "companies/{id}", method = RequestMethod.GET)
 	public HttpEntity<Company> getCompany(@PathVariable String id) throws NotFoundException {
-		/*for (Company company : companies) {
-			if (company.getId().equals(id)) {
-				return new HttpEntity<Company>(company);
-			}
-		}*/
+		Company company = companyService.getCompanyById(id);
 
-		throw new NotFoundException();
+		return new HttpEntity<Company>(company);
+	}
+	
+	@RequestMapping(value = "companies/{id}/owner", method = RequestMethod.POST, consumes="application/json")
+	public HttpEntity<Company> addOwner(@PathVariable String id, @RequestBody Owner owner) throws NotFoundException {
+		Company company = companyService.getCompanyById(id);
+		
+		company = companyService.addOwnerToCompany(company, owner);
+
+		return new HttpEntity<Company>(company);
 	}
 }
