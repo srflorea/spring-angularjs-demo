@@ -38,4 +38,8 @@ public class CompanyService {
 		company.getOwners().add(owner);
 		return companyRepository.save(company);
 	}
+	
+	public void deleteCompany(Company company) {
+		companyRepository.delete(company);
+	}
 }
