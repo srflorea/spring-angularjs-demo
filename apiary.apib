@@ -44,7 +44,9 @@ object containing a company and its details.
             "name":"first company", 
             "address":"some address",
             "city": "city",
-            "country": "country"
+            "country": "country",
+            "email": "",
+            "phoneNumber": ""
         }
 
 + Response 201 (application/json)
@@ -59,6 +61,48 @@ object containing a company and its details.
             "phoneNumber": null,
             "owners": null
         }
+        
+### Update existing Company [PUT]
+
+You may update an existing company using this action. It takes a JSON
+object containing a company and its details. The JSON needs to contain the ID in order
+to identify the company.
+
++ Request (application/json)
+
+        {
+            "id": "1",
+            "name":"updated name", 
+            "address":"some address",
+            "city": "city",
+            "country": "country",
+            "email": "",
+            "phoneNumber": ""
+        }
+
++ Response 201 (application/json)
+
+        {
+            "id": 1,
+            "name": "first company",
+            "address": "some address",
+            "city": "city",
+            "country": "country",
+            "email": null,
+            "phoneNumber": null,
+            "owners": null
+        }
+        
+### Delete existing Company [DELETE /companies/{company_id}]
+
+You may delete an existing company using this action. It takes a JSON
+object containing a company and its details. The JSON needs to contain the ID in order
+to identify the company.
+
++ Parameters
+    + company_id (number) - ID of the Company in the form of an integer
+
++ Response 200 (application/json)
 
 ### Get one company [GET /companies/{company_id}]
 
