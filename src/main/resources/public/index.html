@@ -1,0 +1,102 @@
+<!doctype html>
+<html ng-app="demo">
+	<head>
+		<title>Company Demo</title>
+	</head>
+
+	<body>
+
+		<div class="container">
+			<h1 align="center">Company Demo</h1>
+
+			<div ng-controller="companyCtrl">
+
+				<form>
+					<div class="row">
+						<div class="col-sm-6">
+						  <div class="form-group">
+						    <label for="inputName">Name</label>
+						    <input ng-model="name" class="form-control" id="inputName" placeholder="Enter company name" required="true">
+						  </div>
+						</div>
+						<div class="col-sm-6">
+						  <div class="form-group">
+						    <label for="inputAddress">Address</label>
+						    <input ng-model="address" class="form-control" id="inputAddress" placeholder="Enter company address" required="true">
+						  </div>
+						</div>
+				  </div>
+				  <div class="row">
+				  	<div class="col-sm-6">
+					  <div class="form-group">
+					    <label for="inputCity">City</label>
+					    <input ng-model="city" class="form-control" id="inputCity" placeholder="Enter company city" required="true">
+					  </div>
+					</div>
+					<div class="col-sm-6">
+					   <div class="form-group">
+					    <label for="inputCountry">Country</label>
+					    <input ng-model="country" class="form-control" id="inputCountry" placeholder="Enter company country" required="true">
+					  </div>
+					</div>
+				  </div>
+				  <div class="row">
+				    <div class="col-sm-6">
+					  <div class="form-group">
+					    <label for="inputEmail">Email</label>
+					    <input ng-model="email" class="form-control" id="inputEmail" placeholder="Enter company email">
+					  </div>
+					</div>
+					<div class="col-sm-6">
+					  <div class="form-group">
+					    <label for="inputPhone">Phone number</label>
+					    <input ng-model="phone" class="form-control" id="inputPhone" placeholder="Enter company phone number">
+					  </div>
+					</div>
+				  </div>
+				  
+				  
+				  <button class="btn btn-primary" ng-click="addCompany()">Add Company</button>
+				</form>
+				
+				<br> <br>
+				
+				<h3 align="center">List of companies</h3>
+			
+				<table class="table table-striped">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Address</th>
+				      <th scope="col">City</th>
+				      <th scope="col">Country</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="company in companies">
+				      <th scope="row">{{$index}}</th>
+				      <td>{{company.name}}</td> 
+				      <td>{{company.address}}</td>
+				      <td>{{company.city}}</td>
+				      <td>{{company.country}}</td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="company.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</html>
