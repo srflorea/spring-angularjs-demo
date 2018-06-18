@@ -1,10 +1,10 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://spring-angular-demo.herokuapp.com/
 
 # Company Demo
 
 Company Demo is a simple API allowing consumers to view companies, add new companies, edit companies
-and owners of the companies.
+and add version owners of the companies.
 
 ## Company Collection [/companies]
 
@@ -14,7 +14,7 @@ You can see all the companies registered in the system by using this action. It 
 containing the details about each company.
 
 + Response 200 (application/json)
-
+     
         [
             {
                 "id":"1",
@@ -49,8 +49,6 @@ object containing a company and its details.
 
 + Response 201 (application/json)
 
-    + Body
-
         {
             "id": 1,
             "name": "first company",
@@ -61,3 +59,63 @@ object containing a company and its details.
             "phoneNumber": null,
             "owners": null
         }
+
+### Get one company [GET /companies/{company_id}]
+
+You can see the details about a company by using this action. It retrieves a JSON object
+containing the details about the respective company.
+
++ Parameters
+    + company_id (number) - ID of the Company in the form of an integer
+
++ Response 200 (application/json)
+
+        {
+            "id":"1",
+            "name":"first company",
+            "address":"some address",
+            "city":"city",
+            "country":"country",
+            "email":null,
+            "phoneNumber":null,
+            "owners":[
+                {
+                    "id":"1",
+                    "name":"first owner"
+                }
+            ]
+        }
+        
+### Add owner to company [POST /companies/{company_id}/owner]
+
+You can add an owner to a company by using this action. It retrieves a JSON object
+containing the details about the respective company.
+
++ Parameters
+    + company_id (number) - ID of the Company in the form of an integer
+
++ Request (application/json)
+
+        {
+            "name":"owner name"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "id":"1",
+            "name":"first company",
+            "address":"some address",
+            "city":"city",
+            "country":"country",
+            "email":null,
+            "phoneNumber":null,
+            "owners":[
+                {
+                    "id":"1",
+                    "name":"first owner"
+                }
+            ]
+        }
+        
+        companies/{id}/owner
