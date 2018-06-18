@@ -1,6 +1,6 @@
 package com.example.democompany.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,7 +33,7 @@ public class Company {
 
 	@OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="company_id")
-	private List<Owner> owners;
+	private Set<Owner> owners;
 
 	public Company() {}
 	
@@ -50,7 +50,7 @@ public class Company {
     		@JsonProperty("country") String country,
     		@JsonProperty(value="email", required=false) String email,
     		@JsonProperty(value="phoneNumber", required=false) String phoneNumber,
-    		@JsonProperty(value="owners", required=false) List<Owner> owners) {
+    		@JsonProperty(value="owners", required=false) Set<Owner> owners) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -103,10 +103,10 @@ public class Company {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public List<Owner> getOwners() {
+	public Set<Owner> getOwners() {
 		return owners;
 	}
-	public void setOwners(List<Owner> owners) {
+	public void setOwners(Set<Owner> owners) {
 		this.owners = owners;
 	}
 }
