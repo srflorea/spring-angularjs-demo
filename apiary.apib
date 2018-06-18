@@ -3,78 +3,61 @@ HOST: http://polls.apiblueprint.org/
 
 # Company Demo
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Company Demo is a simple API allowing consumers to view companies, add new companies, edit companies
+and owners of the companies.
 
-## Questions Collection [/questions]
+## Company Collection [/companies]
 
-### List All Questions [GET]
+### List All Companies [GET]
+
+You can see all the companies registered in the system by using this action. It retrieves a JSON array
+containing the details about each company.
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "id":"1",
+                "name":"first company",
+                "address":"some address",
+                "city":"city",
+                "country":"country",
+                "email":null,
+                "phoneNumber":null,
+                "owners":[
                     {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
+                        "id":"1",
+                        "name":"first owner"
                     }
                 ]
             }
         ]
 
-### Create a New Question [POST]
+### Create a New Company [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+You may create your own company using this action. It takes a JSON
+object containing a company and its details.
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "name":"first company", 
+            "address":"some address",
+            "city": "city",
+            "country": "country"
         }
 
 + Response 201 (application/json)
 
-    + Headers
-
-            Location: /questions/2
-
     + Body
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+        {
+            "id": 1,
+            "name": "first company",
+            "address": "some address",
+            "city": "city",
+            "country": "country",
+            "email": null,
+            "phoneNumber": null,
+            "owners": null
+        }
