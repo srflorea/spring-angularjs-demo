@@ -22,7 +22,7 @@ public class Company {
 	@Id
 	@Column(name="company_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	private Long id;
 
 	private String name;
 	private String address;
@@ -37,13 +37,13 @@ public class Company {
 
 	public Company() {}
 	
-	public Company(String id) {
+	public Company(Long id) {
 		this.id = id;
 	}
 	
 	@JsonCreator
     public Company(
-    		@JsonProperty("id") String id,
+    		@JsonProperty("id") Long id,
     		@JsonProperty("name") String name,
     		@JsonProperty("address") String address,
     		@JsonProperty("city") String city,
@@ -61,10 +61,10 @@ public class Company {
         this.owners = owners;
     }
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

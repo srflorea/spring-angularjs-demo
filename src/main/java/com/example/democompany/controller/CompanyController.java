@@ -36,14 +36,14 @@ public class CompanyController {
 	}
 	
 	@RequestMapping(value = "companies/{id}", method = RequestMethod.GET)
-	public HttpEntity<Company> getCompany(@PathVariable String id) throws NotFoundException {
+	public HttpEntity<Company> getCompany(@PathVariable Long id) throws NotFoundException {
 		Company company = companyService.getCompanyById(id);
 
 		return new HttpEntity<Company>(company);
 	}
 	
 	@RequestMapping(value = "companies/{id}/owner", method = RequestMethod.POST, consumes="application/json")
-	public HttpEntity<Company> addOwner(@PathVariable String id, @RequestBody Owner owner) throws NotFoundException {
+	public HttpEntity<Company> addOwner(@PathVariable Long id, @RequestBody Owner owner) throws NotFoundException {
 		Company company = companyService.getCompanyById(id);
 		
 		company = companyService.addOwnerToCompany(company, owner);
